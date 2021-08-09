@@ -1,21 +1,5 @@
 version: '3'
 services:
-  prometheus:
-    # https://hub.docker.com/r/prom/prometheus/tags
-    image: prom/prometheus:v2.24.0
-    container_name: prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./prometheus-provisioning/prometheus.yml:/etc/prometheus/prometheus.yml
-  
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: rabbitmq
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-
   mongodb:
     image: mongo:latest
     container_name: mongodb
@@ -28,7 +12,7 @@ services:
       - mongodb-data:/data/db
 
   influxdb:
-    image: influxdb:latest
+    image: influxdb:1.8
     container_name: influxdb
     ports:
       - '8086:8086'
@@ -52,8 +36,17 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
+  
+  redis:
+    image: redis:6.2.5
+    container_name: redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
 
 volumes:
   influxdb-storage:
   grafana-storage:
   mongodb-data:
+  redis-data:
