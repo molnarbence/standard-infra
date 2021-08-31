@@ -32,8 +32,8 @@ services:
     container_name: influxdb
     ports:
       - '8086:8086'
-    volumes:
-      - influxdb-storage:/var/lib/influxdb
+    # volumes:
+    #   - influxdb-storage:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=db0
       - INFLUXDB_ADMIN_USER=admin
@@ -52,8 +52,17 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment: 
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=datamining
 
 volumes:
-  influxdb-storage:
+  # influxdb-storage:
   grafana-storage:
   mongodb-data:
