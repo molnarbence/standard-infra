@@ -1,14 +1,5 @@
 version: '3'
 services:
-  prometheus:
-    # https://hub.docker.com/r/prom/prometheus/tags
-    image: prom/prometheus:v2.24.0
-    container_name: prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./prometheus-provisioning/prometheus.yml:/etc/prometheus/prometheus.yml
-  
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: rabbitmq
@@ -32,8 +23,6 @@ services:
     container_name: influxdb
     ports:
       - '8086:8086'
-    # volumes:
-    #   - influxdb-storage:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=db0
       - INFLUXDB_ADMIN_USER=admin
@@ -63,6 +52,5 @@ services:
       - POSTGRES_DB=datamining
 
 volumes:
-  # influxdb-storage:
   grafana-storage:
   mongodb-data:

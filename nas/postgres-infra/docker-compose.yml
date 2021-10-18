@@ -1,0 +1,16 @@
+version: "3.7"
+services: 
+  postgres:
+    image: postgres:12
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment: 
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=password123
+      - POSTGRES_DB=datamining
+
+networks:
+  default:
+    external: true
+    name: shared-infra-network

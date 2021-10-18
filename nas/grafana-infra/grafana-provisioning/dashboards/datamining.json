@@ -428,7 +428,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -440,7 +440,7 @@
       "type": "row"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -508,7 +508,7 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -621,7 +621,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -691,7 +691,7 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -812,7 +812,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -907,7 +907,7 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1025,7 +1025,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1038,7 +1038,7 @@
       "type": "row"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -1108,7 +1108,7 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1224,7 +1224,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -1294,7 +1294,7 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB",
+      "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
           "color": {

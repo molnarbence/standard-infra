@@ -1,0 +1,16 @@
+version: "3.7"
+services: 
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    ports:
+      - '8086:8086'
+    environment:
+      - INFLUXDB_DB=db0
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin
+  
+networks:
+  default:
+    external: true
+    name: shared-infra-network
