@@ -19,10 +19,12 @@
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "datasource": "PostgreSQL",
@@ -66,7 +68,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "format": "table",
@@ -242,7 +244,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.2.1",
       "repeat": null,
       "targets": [
         {
@@ -319,7 +321,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "format": "table",
@@ -395,7 +397,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "format": "table",
@@ -478,11 +480,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "groupBy": [],
-          "measurement": "htmlproducer.exec_time.load_page",
+          "measurement": "htmlparser.exec_time.load_page",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT count(\"value\") FROM \"load_page\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
@@ -591,7 +593,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "htmlproducer.exec_time.load_page",
+          "measurement": "htmlparser.exec_time.load_page",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT count(\"value\") FROM \"htmlproducer.exec_time.load_page\" WHERE $timeFilter GROUP BY time(1m) fill(null)",
@@ -643,7 +645,7 @@
         "x": 0,
         "y": 15
       },
-      "id": 32,
+      "id": 16,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -659,11 +661,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
           "groupBy": [],
-          "measurement": "htmlproducer.exec_time.produce",
+          "measurement": "htmlparser.exec_time.parse",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -687,7 +689,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Count of pages produced",
+      "title": "Count of parsed HTMLs",
       "type": "stat"
     },
     {
@@ -784,7 +786,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "htmlproducer.exec_time.load_page",
+          "measurement": "htmlparser.exec_time.load_page",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -834,7 +836,7 @@
         "x": 0,
         "y": 21
       },
-      "id": 48,
+      "id": 30,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -850,36 +852,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.2.1",
       "targets": [
         {
-          "alias": "produced",
           "groupBy": [],
-          "measurement": "htmlproducer.exec_time.produce",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "total pages",
-          "groupBy": [],
-          "measurement": "taskdistributor.total_pages",
+          "measurement": "htmlparser.torrentitems_count",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -894,7 +871,7 @@
               },
               {
                 "params": [],
-                "type": "max"
+                "type": "sum"
               }
             ]
           ],
@@ -903,208 +880,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Page load progress",
-      "type": "stat"
-    },
-    {
-      "datasource": "influx-db0",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 18,
-        "x": 6,
-        "y": 21
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.1.2",
-      "targets": [
-        {
-          "alias": "$tag_hostname",
-          "groupBy": [
-            {
-              "params": [
-                "10s"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "hostname"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "htmlproducer.exec_time.produce",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "HTML production time",
-      "type": "timeseries"
-    },
-    {
-      "collapsed": false,
-      "datasource": "influx-db0",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 27
-      },
-      "id": 8,
-      "panels": [],
-      "title": "HTML Parser",
-      "type": "row"
-    },
-    {
-      "datasource": "influx-db0",
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 0,
-        "y": 28
-      },
-      "id": 16,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.2",
-      "targets": [
-        {
-          "groupBy": [],
-          "measurement": "htmlparser.exec_time.parse",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "count"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Count of parsed HTMLs",
+      "title": "Count of parsed torrent items",
       "type": "stat"
     },
     {
@@ -1165,7 +941,7 @@
         "h": 6,
         "w": 18,
         "x": 6,
-        "y": 28
+        "y": 21
       },
       "id": 10,
       "options": {
@@ -1227,76 +1003,6 @@
       "datasource": "influx-db0",
       "fieldConfig": {
         "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 0,
-        "y": 34
-      },
-      "id": 30,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.2",
-      "targets": [
-        {
-          "groupBy": [],
-          "measurement": "htmlparser.torrentitems_count",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "sum"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Count of parsed torrent items",
-      "type": "stat"
-    },
-    {
-      "datasource": "influx-db0",
-      "fieldConfig": {
-        "defaults": {
           "color": {
             "mode": "palette-classic"
           },
@@ -1346,7 +1052,7 @@
         "h": 6,
         "w": 18,
         "x": 6,
-        "y": 34
+        "y": 27
       },
       "id": 78,
       "options": {
@@ -1442,19 +1148,19 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 30,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-10m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "TrackerManager DataMining",
   "uid": "cgMtMK0Gz",
-  "version": 16
+  "version": 1
 }
