@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -225,7 +225,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
+        "h": 4,
         "w": 14,
         "x": 10,
         "y": 0
@@ -302,83 +302,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 14,
-        "x": 10,
-        "y": 2
-      },
-      "id": 75,
-      "options": {
-        "displayMode": "lcd",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "/^percentage$/",
-          "values": true
-        },
-        "showUnfilled": true,
-        "text": {}
-      },
-      "pluginVersion": "8.2.1",
-      "targets": [
-        {
-          "format": "table",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "WITH total as (\n  SELECT count(1) as \"total_count\" from processing_progress\n)\nSELECT\n  count(1) / (SELECT COALESCE(NULLIF(total_count, 0), 1) FROM total)::float * 100 as \"percentage\"\nFROM\n  processing_progress\nwhere\n  progress = 'loaded'\n",
-          "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "title": "Loaded",
-      "type": "bargauge"
-    },
-    {
-      "datasource": "PostgreSQL",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
+        "h": 4,
         "w": 14,
         "x": 10,
         "y": 4
