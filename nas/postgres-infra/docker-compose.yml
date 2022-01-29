@@ -9,8 +9,15 @@ services:
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=password123
       - POSTGRES_DB=datamining
+    volumes:
+      - "shared-infra-volume:/var/lib/shared-infra"
 
 networks:
   default:
     external: true
     name: shared-infra-network
+
+volumes:
+  shared-infra-volume:
+    external: true
+      

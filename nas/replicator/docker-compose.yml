@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  replicator:
+    image: MyCloudPR4100:5000/trackermanager/replicator
+    container_name: replicator
+    ports:
+      - "10001:80"
+    environment:
+      CsvFilePath: "/var/lib/shared-infra/torrentinfos.csv"
+      ConnectionStrings__Postgres: "Host=postgres;Username=dbuser;Password=password123;Database=datamining"
+      ConnectionStrings__MongoDb: "mongodb://root:mypassword@mongodb:27017/?authSource=admin&readPreference=primary&ssl=false"
+    volumes:
+      - "shared-infra-volume:/var/lib/shared-infra"
+
+networks:
+  default:
+    external: true
+    name: shared-infra-network
+
+volumes:
+  shared-infra-volume:
+    external: true
