@@ -10,6 +10,17 @@
             "database": "datamining",
             "username": "dbuser",
             "password": "password123"
+        },
+        {
+            "previewLimit": 50,
+            "server": "postgres.infra.local",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "Postges Infra",
+            "group": "Infra",
+            "database": "datamining",
+            "username": "dbuser",
+            "password": "password123"
         }
     ]
 }

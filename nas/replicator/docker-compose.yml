@@ -6,9 +6,9 @@ services:
     ports:
       - "10001:80"
     environment:
-      CsvFilePath: "/var/lib/shared-infra/torrentinfos.csv"
-      ConnectionStrings__Postgres: "Host=postgres;Username=dbuser;Password=password123;Database=datamining"
-      ConnectionStrings__MongoDb: "mongodb://root:mypassword@mongodb:27017/?authSource=admin&readPreference=primary&ssl=false"
+      CsvFilePath: "/var/lib/shared-infra/sharedfile.csv"
+      Postgres__ConnectionString: "Host=postgres;Username=dbuser;Password=password123;Database=datamining"
+      MongoDB__ConnectionString: "mongodb://root:mypassword@mongodb:27017/?authSource=admin&readPreference=primary&ssl=false"
     volumes:
       - "shared-infra-volume:/var/lib/shared-infra"
 
